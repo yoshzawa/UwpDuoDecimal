@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="UwpDuoDecimal.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpDuoDecimal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Orientation="Horizontal">
+        <TextBlock x:Name="tBlockInput" FontSize="16" Text="10"/>
+        <StackPanel Orientation="Vertical">
+            <Button x:Name="toDecimal" Click="toDecimal_Click">-10進数に-></Button>
+            <Button x:Name="toDuoDecimal" Click="toDuoDecimal_Click">-12進数に-></Button>
+        </StackPanel>
+        <TextBlock x:Name="tBlockResult" FontSize="16" Text="???"/>
+    </StackPanel>
+</Page>
