@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text; // StringBuilder を使う場合に備えて残しています。現在のSetDuoDecimalでは不要ですが、GetIntで使うかもしれません。
 
 namespace UwpDuoDecimal
 {
-    internal class DuoDecimal
+    public class DuoDecimal
     {
-        private string _value; // 12進数の値を保持
+        private string _value;
 
-        // プロパティ
         public string Value
         {
             get { return _value; }
@@ -20,7 +16,15 @@ namespace UwpDuoDecimal
                 {
                     throw new ArgumentException("無効な12進数文字列です。0-9, T, E のいずれかの文字で構成される1～2文字の文字列を入力してください。");
                 }
-                _value = value.ToLower();
+
+                string processedValue = value.ToLower();
+
+                if (processedValue.Length == 2 && processedValue.StartsWith("0"))
+                {
+                    processedValue = processedValue.Substring(1);
+                }
+
+                _value = processedValue;
             }
         }
 
@@ -30,7 +34,6 @@ namespace UwpDuoDecimal
         /// <param name="duoDecimalString">12進数文字列 (1～2文字)</param>
         public DuoDecimal(string duoDecimalString)
         {
-
             Value = duoDecimalString;
         }
 
@@ -40,7 +43,7 @@ namespace UwpDuoDecimal
         /// <param name="intValue">10進数 (0～143)</param>
         public DuoDecimal(int intValue)
         {
-            if (intValue < 0 || intValue > 143) // 12進数2桁 (EE) は10進数で 11*12 + 11 = 132+11=143
+            if (intValue < 0 || intValue > 143)
             {
                 throw new ArgumentOutOfRangeException(nameof(intValue), "10進数の値は0から143の範囲で指定してください。");
             }
@@ -66,14 +69,15 @@ namespace UwpDuoDecimal
             {
                 throw new ArgumentOutOfRangeException(nameof(intValue), "10進数の値は0から143の範囲で指定してください。");
             }
+
             string s = "";
             if (intValue >= 12)
             {
-                s += "0123456789TE"[intValue/12];
+                s += "0123456789TE"[intValue / 12];
             }
-            s += "0123456789TE"[intValue%12];
+            s += "0123456789TE"[intValue % 12];
 
-            _value = s;
+            Value = s;
         }
 
         /// <summary>
@@ -91,6 +95,7 @@ namespace UwpDuoDecimal
         /// <returns>10進数</returns>
         public int GetInt()
         {
+            // 未完成
             return 0;
         }
 
@@ -101,8 +106,8 @@ namespace UwpDuoDecimal
         /// <returns>有効な12進数表現であればTrue、そうでなければFalse</returns>
         public static bool IsValidDuoDecimalString(string duoDecimalString)
         {
+            // 未完成
             return true;
         }
-
     }
 }

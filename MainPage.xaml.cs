@@ -30,13 +30,13 @@ namespace UwpDuoDecimal
         private void toDecimal_Click(object sender, RoutedEventArgs e)
         {
             DuoDecimal d=new DuoDecimal(tBlockInput.Text);
-            tBlockResult.Text = d.getInt();
+            tBlockResult.Text = d.GetInt().ToString();
         }
 
         private void toDuoDecimal_Click(object sender, RoutedEventArgs e)
         {
             DuoDecimal d = new DuoDecimal(tBlockInput.Text);
-            tBlockResult.Text = d.getString();
+            tBlockResult.Text = d.GetString();
         }
     }
 }
