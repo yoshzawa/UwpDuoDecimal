@@ -29,13 +29,15 @@ namespace UwpDuoDecimal
 
         private void toDecimal_Click(object sender, RoutedEventArgs e)
         {
-            DuoDecimal d=new DuoDecimal(tBlockInput.Text);
+            int num = int.Parse(tBlockInput.Text);
+            DuoDecimal d=new DuoDecimal(num);
             tBlockResult.Text = d.GetInt().ToString();
         }
 
         private void toDuoDecimal_Click(object sender, RoutedEventArgs e)
         {
-            DuoDecimal d = new DuoDecimal(tBlockInput.Text);
+            int num = int.Parse(tBlockInput.Text);
+            DuoDecimal d = new DuoDecimal(num);
             tBlockResult.Text = d.GetString();
         }
     }
