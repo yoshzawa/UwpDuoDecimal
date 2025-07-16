@@ -89,14 +89,40 @@ namespace UwpDuoDecimal
             return _value;
         }
 
+
+        int GetDigitValue(char c)
+        {
+            if (c >= '0' && c <= '9')
+            {
+                return c - '0';
+            }
+            else if (c == 't')
+            {
+                return 10;
+            }
+            else
+            {
+                return 11;
+            }
+        }
         /// <summary>
         /// 現在の12進数値を10進数として取得します。
         /// </summary>
         /// <returns>10進数</returns>
         public int GetInt()
         {
-            // 未完成
-            return 0;
+            int intValue = 0; ;
+
+
+            intValue += GetDigitValue(_value[0]);
+            if (_value.Length == 2)
+            {
+                intValue *=  12; 
+                intValue += GetDigitValue(_value[1]);
+            }
+
+            return intValue;
+        
         }
 
         /// <summary>
@@ -106,8 +132,28 @@ namespace UwpDuoDecimal
         /// <returns>有効な12進数表現であればTrue、そうでなければFalse</returns>
         public static bool IsValidDuoDecimalString(string duoDecimalString)
         {
-            // 未完成
+            if (string.IsNullOrEmpty(duoDecimalString))
+            {
+                return false;
+            }
+
+            if (duoDecimalString.Length > 2)
+            {
+                return false;
+            }
+
+            foreach (char c in duoDecimalString)
+            {
+                // '0'から'9'、または't'であるかをチェック
+                if (!((c >= '0' && c <= '9') || c == 't'))
+                {
+                    return false; // 無効な文字が含まれている
+                }
+            }
+
+            // すべてのチェックを通過した場合、有効
             return true;
+
         }
     }
 }
