@@ -69,6 +69,10 @@ namespace UwpDuoDecimal
             {
                 throw new ArgumentOutOfRangeException(nameof(intValue), "10進数の値は0から143の範囲で指定してください。");
             }
+            if (intValue < 0)
+            {
+                intValue += 144;
+            }
 
             string s = "";
             if (intValue >= 12)
