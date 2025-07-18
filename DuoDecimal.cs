@@ -67,7 +67,7 @@ namespace UwpDuoDecimal
         {
             if (intValue < -72 || intValue > 71)
             {
-                throw new ArgumentOutOfRangeException(nameof(intValue), "10進数の値は0から143の範囲で指定してください。");
+                throw new ArgumentOutOfRangeException(nameof(intValue), "10進数の値は-72から71の範囲で指定してください。");
             }
             if (intValue < 0)
             {
