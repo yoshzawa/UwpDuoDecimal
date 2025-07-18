@@ -43,9 +43,9 @@ namespace UwpDuoDecimal
         /// <param name="intValue">10進数 (0～143)</param>
         public DuoDecimal(int intValue)
         {
-            if (intValue < 0 || intValue > 143)
+            if (intValue < -72 || intValue > 71)
             {
-                throw new ArgumentOutOfRangeException(nameof(intValue), "10進数の値は0から143の範囲で指定してください。");
+                throw new ArgumentOutOfRangeException(nameof(intValue), "10進数の値は-72から71の範囲で指定してください。");
             }
             SetDuoDecimal(intValue);
         }
@@ -62,10 +62,10 @@ namespace UwpDuoDecimal
         /// <summary>
         /// 10進数の値を設定し、12進数に変換して保存します。
         /// </summary>
-        /// <param name="intValue">10進数 (0～143)</param>
+        /// <param name="intValue">10進数 (-72～71)</param>
         public void SetDuoDecimal(int intValue)
         {
-            if (intValue < 0 || intValue > 143)
+            if (intValue < -72 || intValue > 71)
             {
                 throw new ArgumentOutOfRangeException(nameof(intValue), "10進数の値は0から143の範囲で指定してください。");
             }
